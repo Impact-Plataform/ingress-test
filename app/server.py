@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from fileinput import filename
 
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, redirect
 from cripto import CriptoServer
 from http import HTTPStatus
 
@@ -13,9 +13,8 @@ cripto = CriptoServer(key_path)
 
 @app.route('/')
 def echo():
-    return {
-               'timestamp': datetime.now()
-           }, HTTPStatus.OK
+    return redirect('https://github.com/Impact-Plataform/ingress-test', code=302)
+           
 
 @app.route('/apply', methods=['POST'])
 def post_apply():
