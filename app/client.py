@@ -1,3 +1,4 @@
+from datetime import datetime
 from http import HTTPStatus
 import json
 from ulid import ULID
@@ -51,12 +52,13 @@ except Exception as e:
 
 
 # get user info
-info = {
+info = {    
     'name': "SEU NOME",
     'email': "SEU EMAIL",
     'phone': "SEU TELEFONE COM DDD",
     'id': my_id,
-    'essay': essay
+    'essay': essay,
+    'timestamp': datetime.now()
 }
 
 print(f"Dados que serao enviados: {json.dumps(info)}")

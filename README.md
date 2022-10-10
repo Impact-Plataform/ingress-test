@@ -76,6 +76,7 @@ $> pwd
 Usando o seu [editor de texto/códigos preferido](https://code.visualstudio.com/), vá até o arquivo client.py, que está na pasta app, dentro do repositório que você acabou de baixar (<b>app/client.py</b>), é nele que precisamos colocar algumas informações importantes!
 
 Você precisa alterar algumas linhas específicas para sabermos quem é você e saber se você consegue seguir corretamente essas instruções:
+<b>(NOS INFORME OS SEUS DADOS PARA QUE POSSAMOS ENTRAR EM CONTATO COM VOCÊ!)</b>
 
 |Linha|Descrição|Valor no arquivo|Novo valor|
 |:-:|:--|:--|:--|
@@ -83,7 +84,7 @@ Você precisa alterar algumas linhas específicas para sabermos quem é você e 
 |**55**|Precisamos do seu nome|```'name': "SEU NOME",```|```'name': "fulano afim de estudar",```|
 |**56**|Precisamos do seu e-mail|```'email': "SEU EMAIL",```|```'email': "fulano@email.com",```|
 |**57**|Precisamos do seu telefone|```'phone': "SEU TELEFONE COM DDD",```|```'phone': "(21) 98888-7777",```|
-|**7**0|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
+|**73**|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
 
 Após alterar o cógigo, ainda há um passo importante nesse teste, queremos saber de você, por que quer estudar conosco, nos conte quais razões te trouxeram aqui, para isso você precisa escrever tudo o que achar relevante no arquivo <b>etc/essay.txt</b> no diretório da aplicação. Note que sem isso a coisa toda não vai funcionar
 
