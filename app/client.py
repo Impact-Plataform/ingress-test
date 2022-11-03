@@ -58,7 +58,7 @@ info = {
     'phone': "SEU TELEFONE COM DDD",
     'id': my_id,
     'essay': essay,
-    'timestamp': datetime.now()
+    'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 }
 
 print(f"Dados que serao enviados: {json.dumps(info)}")

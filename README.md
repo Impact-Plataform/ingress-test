@@ -46,8 +46,8 @@ Execute um <b>comando de cada vez</b> no seu terminal/prompt de comando para con
 cd %HOMEPATH%
 md git
 cd git
-git clone http://github.com/Impact-Plataform/Processo-Seletivo.git
-cd Processo-Seletivo/ 
+git clone http://github.com/Impact-Plataform/ingress-test.git
+cd ingress-test/ 
 ```
 
 #### Linux: 
@@ -55,21 +55,21 @@ cd Processo-Seletivo/
 cd ~
 mkdir git
 cd git
-git clone http://github.com/Impact-Plataform/Processo-Seletivo.git
-cd Processo-Seletivo/ 
+git clone http://github.com/Impact-Plataform/ingress-test.git
+cd ingress-test/ 
 ```
 
 Fique atento em qual pasta você está no momento, os comandos a seguir só irão funcionar se forem executados no local correto.
 
 No Windows, o caminho aparece na aprte esquerda do prompt de comando e deve ser algo como:
 ```
-C:\Users\USUARIO\git\Processo-Selevito>
+C:\Users\USUARIO\git\ingress-test>
 ```
 
 No Linux, isso varia um pouco de acordo com o tipo de terminal que você está usando, mas exsite um comando que pode te ajudar aqui, o <b>pwd</b>, veja como deve ser a saída desse comando:
 ```
 $> pwd
-/home/USUARIO/git/Processo-Seletivo
+/home/USUARIO/git/ingress-test
 ```
 
 ### Vamos alterar alguns pontos para fazer esse programa funcionar?
@@ -80,11 +80,11 @@ Você precisa alterar algumas linhas específicas para sabermos quem é você e 
 
 |Linha|Descrição|Valor no arquivo|Novo valor|
 |:-:|:--|:--|:--|
-|**28**|Caminho para buscar a chave de criptografia|```key_url = '## URL PARA BAIXAR A CHAVE DE CRIPTOGRAFIA ##'```|```key_url = 'http://ingress-impact-platform.duckdns.org/key'```|
-|**55**|Precisamos do seu nome|```'name': "SEU NOME",```|```'name': "fulano afim de estudar",```|
-|**56**|Precisamos do seu e-mail|```'email': "SEU EMAIL",```|```'email': "fulano@email.com",```|
-|**57**|Precisamos do seu telefone|```'phone': "SEU TELEFONE COM DDD",```|```'phone': "(21) 98888-7777",```|
-|**73**|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
+|**29**|Caminho para buscar a chave de criptografia|```key_url = '## URL PARA BAIXAR A CHAVE DE CRIPTOGRAFIA ##'```|```key_url = 'http://ingress-impact-platform.duckdns.org/key'```|
+|**56**|Precisamos do seu nome|```'name': "SEU NOME",```|```'name': "fulano afim de estudar",```|
+|**57**|Precisamos do seu e-mail|```'email': "SEU EMAIL",```|```'email': "fulano@email.com",```|
+|**58**|Precisamos do seu telefone|```'phone': "SEU TELEFONE COM DDD",```|```'phone': "(21) 98888-7777",```|
+|**72**|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
 
 Após alterar o cógigo, ainda há um passo importante nesse teste, queremos saber de você, por que quer estudar conosco, nos conte quais razões te trouxeram aqui, para isso você precisa escrever tudo o que achar relevante no arquivo <b>etc/essay.txt</b> no diretório da aplicação. Note que sem isso a coisa toda não vai funcionar
 
