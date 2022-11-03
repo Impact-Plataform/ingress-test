@@ -81,10 +81,10 @@ Você precisa alterar algumas linhas específicas para sabermos quem é você e 
 |Linha|Descrição|Valor no arquivo|Novo valor|
 |:-:|:--|:--|:--|
 |**29**|Caminho para buscar a chave de criptografia|```key_url = '## URL PARA BAIXAR A CHAVE DE CRIPTOGRAFIA ##'```|```key_url = 'http://ingress-impact-platform.duckdns.org/key'```|
-|**56**|Precisamos do seu nome|```'name': "SEU NOME",```|```'name': "fulano afim de estudar",```|
-|**57**|Precisamos do seu e-mail|```'email': "SEU EMAIL",```|```'email': "fulano@email.com",```|
-|**58**|Precisamos do seu telefone|```'phone': "SEU TELEFONE COM DDD",```|```'phone': "(21) 98888-7777",```|
-|**72**|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
+|**54**|Precisamos do seu nome|```name = 'ESU NOME AQUI'```|```name = "fulano afim de estudar"```|
+|**55**|Precisamos do seu e-mail|```email = 'SEU EMAIL AQUI'```|```email = "fulano@email.com"```|
+|**56**|Precisamos do seu telefone|```phone = 'SEU TELEFONE COM DDD PARA CONTATO AQUI'```|```phone = "(21) 98888-7777"```|
+|**71**|Caminho para que esse programa consiga nos enviar os resultados e seus dados|```post_url = '## URL PARA ENVIAR O TESTE ##'```|```post_url = 'http://ingress-impact-platform.duckdns.org/apply'```|
 
 Após alterar o cógigo, ainda há um passo importante nesse teste, queremos saber de você, por que quer estudar conosco, nos conte quais razões te trouxeram aqui, para isso você precisa escrever tudo o que achar relevante no arquivo <b>etc/essay.txt</b> no diretório da aplicação. Note que sem isso a coisa toda não vai funcionar
 

@@ -4,7 +4,7 @@ import json
 from ulid import ULID
 from os.path import exists
 import requests
-from cripto import CriptoClient
+from cripto import CriptoClient, SymmetricCripto
 
 # check and create my ID if needed
 my_id_file = "./etc/myId.key"
@@ -50,28 +50,27 @@ except Exception as e:
     print(f"## Ocorreu um erro ao tentar carregar sua redacao: {str(e)}")
     print('## Verifique se sua redacao esta no arquivo ./etc/essay.txt')
 
+#set user info
+name = 'ESU NOME AQUI'
+email = 'SEU EMAIL AQUI'
+phone = 'SEU TELEFONE PARA CONTATO AQUI'
 
-# get user info
-info = {    
-    'name': "SEU NOME",
-    'email': "SEU EMAIL",
-    'phone': "SEU TELEFONE COM DDD",
+# prepare body data
+body = {    
+    'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     'id': my_id,
-    'essay': essay,
-    'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-}
-
-print(f"Dados que serao enviados: {json.dumps(info)}")
-
-# prepare data
-body = {
-    "apply": cripto.encrypt(json.dumps(info))
+    'info': {
+            'name' : cripto.encrypt(name),
+            'email' : cripto.encrypt(email),
+            'phone' : cripto.encrypt(phone),
+            'essay' : SymmetricCripto.encrypt(my_id, essay)
+    }
 }
 
 # send data
 post_url = '## URL PARA ENVIAR O TESTE ##'
 
-print(f"Tentando executar o envio das informações para {post_url}\nRequest:\n\tHeaders={headers}\n\tBody: {body}")
+print(f"Tentando executar o envio das informações para {post_url}\nRequest:\n\tHeaders\t\t{headers}\n\tBody:\t\t{body}")
 
 try:
     response = requests.post(post_url, json=body, headers=headers)

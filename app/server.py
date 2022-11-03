@@ -3,7 +3,7 @@ from datetime import datetime
 from fileinput import filename
 
 from flask import Flask, request, send_file, redirect
-from cripto import CriptoServer
+from cripto import CriptoServer, SymmetricCripto
 from http import HTTPStatus
 
 app = Flask(__name__)
@@ -20,9 +20,12 @@ def echo():
 def post_apply():
     try:
         id = request.headers['id']
-        apply = request.json['apply']
 
-        info = json.loads(cripto.decrypt(apply))
+        info = json.loads(request.json['info'])
+        info['name'] = cripto.decrypt(info['name'])
+        info['email'] = cripto.decrypt(info['email'])
+        info['phone'] = cripto.decrypt(info['phone'])
+        info['essay'] = SymmetricCripto.decrypt(id, info['essay'])
 
         now = datetime.now().strftime('%Y%m%d%H%M%S')
         file_name = f"./etc/apply_{id}_{now}"
@@ -32,7 +35,7 @@ def post_apply():
     except Exception as e:
         print(f"/apply -> Exception: {str(e)}")
         return {
-                   'msg': e,
+                   'msg': str(e),
                    'timestamp': datetime.now()
                }, HTTPStatus.UNPROCESSABLE_ENTITY
 
