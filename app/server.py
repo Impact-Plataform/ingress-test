@@ -15,17 +15,18 @@ cripto = CriptoServer(key_path)
 def echo():
     return redirect('https://github.com/Impact-Plataform/ingress-test', code=302)
            
-
 @app.route('/apply', methods=['POST'])
 def post_apply():
     try:
         id = request.headers['id']
-
-        info = json.loads(request.json['info'])
-        info['name'] = cripto.decrypt(info['name'])
-        info['email'] = cripto.decrypt(info['email'])
-        info['phone'] = cripto.decrypt(info['phone'])
-        info['essay'] = SymmetricCripto.decrypt(id, info['essay'])
+        info = {}
+        
+        info['name'] = cripto.decrypt(request.json['name'])
+        info['email'] = cripto.decrypt(request.json['email'])
+        info['phone'] = cripto.decrypt(request.json['phone'])
+        info['essay'] = SymmetricCripto.decrypt(id, request.json['essay'])
+        
+        print(f"/apply -> Receved: {json.dumps(info)}")
 
         now = datetime.now().strftime('%Y%m%d%H%M%S')
         file_name = f"./etc/apply_{id}_{now}"

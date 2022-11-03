@@ -62,7 +62,7 @@ class CriptoServer:
     def decrypt(self, message: str):
         base64_bytes = message.encode('ascii')
         message_bytes = base64.b64decode(base64_bytes)
-        return self._key.decrypt(message_bytes, self._padding).decode('ascii')
+        return self._key.decrypt(message_bytes, self._padding).decode('utf-8')
 
     def get_private(self):
         return self._key
@@ -102,7 +102,7 @@ class CriptoClient:
         )
 
     def encrypt(self, message: str):
-        encrypt = self._key.encrypt(message.encode('ascii'), self._padding)
+        encrypt = self._key.encrypt(message.encode('utf-8'), self._padding)
         base64_bytes = base64.b64encode(encrypt)
         return base64_bytes.decode('ascii')
 
@@ -119,7 +119,7 @@ class SymmetricCripto:
             kdf = PBKDF2HMAC(
                 algorithm=hashes.SHA512(),
                 length=32,
-                salt=bytes(secret_key, 'ascii'),
+                salt=bytes(secret_key, 'utf-8'),
                 iterations=10000,
                 backend=default_backend()
             )
@@ -146,7 +146,7 @@ class SymmetricCripto:
             kdf = PBKDF2HMAC(
                 algorithm=hashes.SHA512(),
                 length=32,
-                salt=bytes(secret_key, 'ascii'),
+                salt=bytes(secret_key, 'utf-8'),
                 iterations=10000,
                 backend=default_backend()
             )

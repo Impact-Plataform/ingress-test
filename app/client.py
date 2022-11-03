@@ -51,20 +51,16 @@ except Exception as e:
     print('## Verifique se sua redacao esta no arquivo ./etc/essay.txt')
 
 #set user info
-name = 'ESU NOME AQUI'
-email = 'SEU EMAIL AQUI'
-phone = 'SEU TELEFONE PARA CONTATO AQUI'
+name = 'SEU NOME'
+email = 'SEU EMAIL'
+phone = 'SEU TELEFONE COM DDD'
 
 # prepare body data
 body = {    
-    'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    'id': my_id,
-    'info': {
-            'name' : cripto.encrypt(name),
-            'email' : cripto.encrypt(email),
-            'phone' : cripto.encrypt(phone),
-            'essay' : SymmetricCripto.encrypt(my_id, essay)
-    }
+    'name' : cripto.encrypt(name),
+    'email' : cripto.encrypt(email),
+    'phone' : cripto.encrypt(phone),
+    'essay' : SymmetricCripto.encrypt(my_id, essay)
 }
 
 # send data
