@@ -10,13 +10,13 @@ from os.path import dirname, abspath
 
 
 app = Flask(__name__, template_folder='templates')
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = ''
-app.config['MAIL_PASSWORD'] = ''
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-mail = Mail(app)
+# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = ''
+# app.config['MAIL_PASSWORD'] = ''
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# mail = Mail(app)
 
 key_path = './keys'
 cripto = CriptoServer(key_path)
@@ -61,11 +61,11 @@ def post_apply():
         connection.close()
         print("Finished!")
 
-        msg = Message('Teste de Admissão da Plataforma Impact', sender='a.alentejo98@gmail.com',
-                      recipients=[info['email']])
-        msg.body = "Parabés, você completou a primeira fase do teste de admissão da Plataforma Impact. Clique no link " \
-                   "a seguir e complete sua inscrição: https://forms.gle/YDdvUWnmXihD7Ajo9"
-        mail.send(msg)
+        # msg = Message('Teste de Admissão da Plataforma Impact', sender='a.alentejo98@gmail.com',
+        #               recipients=[info['email']])
+        # msg.body = "Parabés, você completou a primeira fase do teste de admissão da Plataforma Impact. Clique no link " \
+        #            "a seguir e complete sua inscrição: https://forms.gle/YDdvUWnmXihD7Ajo9"
+        # mail.send(msg)
     except Exception as e:
         print(f"/apply -> Exception: {str(e)}")
         return {
