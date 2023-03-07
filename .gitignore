@@ -138,3 +138,5 @@ etc/my*
 etc/server*
 .idea
 keys/
+
+*.db

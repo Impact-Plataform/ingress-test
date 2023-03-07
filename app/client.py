@@ -76,6 +76,7 @@ try:
         print('Legal, seu teste foi aceito! aguarde um contato do pessoal da plataforma nos dados que vc acabou de nos enviar!')
     else:
         print('## Ocorreu um erro ao tentar enviar o seu teste, por favor revise as instrucoes e tente novamente')
+        print(f'## Mensagem de erro: {response.text}')
 
 except Exception as e:
     print(f"## Ocorreu um erro ao tentar enviar seu teste: {str(e)}")
