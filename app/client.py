@@ -9,8 +9,8 @@ from cripto import CriptoClient, SymmetricCripto
 # check and create my ID if needed
 my_id_file = "./etc/myId.key"
 my_id = str(ULID())
-base_url_prod = 'http://ingress-impact-platform.duckdns.org'
-base_url = 'http://localhost:5000'
+base_url = 'http://ingress-impact-platform.duckdns.org'
+# base_url = 'http://localhost:5000'
 try:
     if not exists(my_id_file):
         with open(my_id_file, 'w') as f:
