@@ -12,8 +12,8 @@ from os.path import dirname, abspath
 app = Flask(__name__, template_folder='templates')
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'a.alentejo98@gmail.com'
-app.config['MAIL_PASSWORD'] = '53589800'
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
