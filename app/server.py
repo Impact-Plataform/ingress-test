@@ -10,13 +10,6 @@ from os.path import dirname, abspath
 
 
 app = Flask(__name__, template_folder='templates')
-# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = ''
-# app.config['MAIL_PASSWORD'] = ''
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# mail = Mail(app)
 
 key_path = './keys'
 cripto = CriptoServer(key_path)
@@ -35,15 +28,11 @@ def post_apply():
 
         apply_id = request.headers['id']
         info = {
-            'name': request.json['name'],
-            'email': request.json['email'],
-            'phone': request.json['phone'],
-            'essay': request.json['essay']}
-        # info = {
-        #     'name': cripto.decrypt(request.json['name']),
-        #     'email': cripto.decrypt(request.json['email']),
-        #     'phone': cripto.decrypt(request.json['phone']),
-        #     'essay': SymmetricCripto.decrypt(apply_id, request.json['essay'])}
+            'name': cripto.decrypt(request.json['name']),
+            'email': cripto.decrypt(request.json['email']),
+            'phone': cripto.decrypt(request.json['phone']),
+            'essay': SymmetricCripto.decrypt(apply_id, request.json['essay'])
+        }
 
         print(f"/apply -> Receved: {json.dumps(info)}")
 
@@ -54,18 +43,13 @@ def post_apply():
         print(f"/apply -> Saved: {file_name}")
         print("Inseting into database")
         c.execute('''
-                   INSERT INTO applications (id, name, email, phone, essay)
+                   INSERT INTO applications (apply_id, name, email, phone, essay)
                    VALUES (?, ?, ?, ?, ?)
                ''', (apply_id, info['name'], info['email'], info['phone'], info['essay']))
         connection.commit()
         connection.close()
         print("Finished!")
 
-        # msg = Message('Teste de Admissão da Plataforma Impact', sender='a.alentejo98@gmail.com',
-        #               recipients=[info['email']])
-        # msg.body = "Parabés, você completou a primeira fase do teste de admissão da Plataforma Impact. Clique no link " \
-        #            "a seguir e complete sua inscrição: https://forms.gle/YDdvUWnmXihD7Ajo9"
-        # mail.send(msg)
     except Exception as e:
         print(f"/apply -> Exception: {str(e)}")
         return {
